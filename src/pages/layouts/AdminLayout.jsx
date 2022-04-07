@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Layout, Breadcrumb } from "antd";
 
 import { Outlet } from "react-router-dom";
-import SideBar from "../../components/admin/SideBar";
+import SideBarAdmin from "../../components/admin/SideBarAdmin/SideBarAdmin";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -15,12 +15,12 @@ const AdminLayout = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <SideBar />
+        <SideBarAdmin />
       </Sider>
       <Layout className="site-layout">
         <Header
           className="site-layout-background"
-          style={{ padding: "0 16px", fontWeight: "bold", fontSize: 25 }}
+          style={{ padding: "0 16px", fontWeight: "normal", fontSize: 25, color: "white", textAlign: "start" }}
         >
           Manager
         </Header>

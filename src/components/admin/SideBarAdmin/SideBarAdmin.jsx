@@ -10,17 +10,18 @@ import {
 import { Link } from "react-router-dom";
 import SubMenu from "antd/lib/menu/SubMenu";
 
-const SideBar = () => {
+const SideBarAdmin = () => {
   return (
     <>
-      <Link to='/'>
-        <div className="side-logo logo text-center">
-          <img
-            src="https://res.cloudinary.com/dzroyn2i4/image/upload/v1648226288/car/favicon_a63nys.png"
-            alt=""
-            className="gcol-12"
-          />
-          <div>ElecCar</div>
+      <Link to="/">
+        <div className="side-logo logo py-4">
+          <div className="flex justify-center">
+            <img
+              src="https://res.cloudinary.com/dzroyn2i4/image/upload/v1648226288/car/favicon_a63nys.png"
+              alt=""
+            />
+          </div>
+          <div className="text-white font-bold text-lg text-center pt-3">ElecCar</div>
         </div>
       </Link>
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
@@ -45,4 +46,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default SideBarAdmin;
