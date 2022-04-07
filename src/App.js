@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import AdminLayout from "./pages/layouts/AdminLayout";
 import WebsiteLayout from "./pages/layouts/WebsiteLayout";
 import ListProject from "./features/projects/ListProject";
-import AboutMe from "./components/admin/AboutMe/AboutMe";
+import AboutMe from "./pages/AboutMe/AboutMe";
 function App() {
   return (
     <div className="App">
