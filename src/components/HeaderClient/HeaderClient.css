@@ -1,0 +1,34 @@
+.header-info {
+    padding: 30px 50px;
+}
+.header-name {
+    font-size: 48px;
+    font-weight: bold;
+    padding-top: 30px;
+}
+.header-subdesc {
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+.header-desc {
+    font-size: 16px;
+    padding-right: 20px;
+}
+.header-btn-group {
+    display: flex;
+    gap: 2%;
+}
+.header-btn-view-port button{
+    background: #54b689;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+}
+.header-btn-view-resume button{
+    background: rgb(111, 111, 111);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+}

@@ -1,7 +1,6 @@
 import { Col, Row } from "antd";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import HeaderClient from "../../components/HeaderClient/HeaderClient";
 import SideBarClient from "../../components/SideBarClient/SideBarClient";
 
 const WebsiteLayout = () => {
@@ -11,7 +10,7 @@ const WebsiteLayout = () => {
         <SideBarClient />
       </Col>
       <Col span={19}>
-        content
+        <Outlet />
       </Col>
     </Row>
   );
