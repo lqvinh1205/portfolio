@@ -1,0 +1,17 @@
+.footer-client {
+    position: relative;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+.footer-client::after {
+    content: '';
+    position: absolute;
+    background: rgb(111, 111, 111);
+    left: 20%;
+    right: 20%;
+    top: 0;
+    height: 1px;
+}
+.footer-client span {
+    color: #54b689;
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import WhatIDo from '../../components/admin/WhatIDo/WhatIDo'
 import FeaturedProject from '../../components/FeaturedProject/FeaturedProject'
+import FooterClient from '../../components/FooterClient/FooterClient'
 import HeaderClient from '../../components/HeaderClient/HeaderClient'
 
 const AboutMe = () => {
@@ -9,6 +10,7 @@ const AboutMe = () => {
         <HeaderClient />
         <WhatIDo />
         <FeaturedProject />
+        <FooterClient />
     </div>
   )
 }
