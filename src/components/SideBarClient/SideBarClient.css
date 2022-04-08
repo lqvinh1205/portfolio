@@ -26,6 +26,7 @@
 }
 .img-side {
     border-radius: 50%;
+    overflow: hidden;
 }
 .info-quickly {
     text-align: center;

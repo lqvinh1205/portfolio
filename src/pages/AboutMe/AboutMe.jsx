@@ -1,5 +1,6 @@
 import React from 'react'
 import WhatIDo from '../../components/admin/WhatIDo/WhatIDo'
+import FeaturedProject from '../../components/FeaturedProject/FeaturedProject'
 import HeaderClient from '../../components/HeaderClient/HeaderClient'
 
 const AboutMe = () => {
@@ -7,6 +8,7 @@ const AboutMe = () => {
     <div>
         <HeaderClient />
         <WhatIDo />
+        <FeaturedProject />
     </div>
   )
 }

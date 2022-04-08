@@ -18,7 +18,7 @@ const HeaderClient = () => {
         </div>
       </Col>
       <Col span={9}>
-        <div>
+        <div className="header-info-img">
           <img src="https://themes.3rdwavemedia.com/devcard/bs5/1.1/assets/images/profile-lg.jpg" alt="" />
         </div>
       </Col>

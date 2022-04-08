@@ -25,6 +25,9 @@
     font-weight: bold;
     color: white;
 }
+.header-info-img img{
+    width: 100%;
+}
 .header-btn-view-resume button{
     background: rgb(111, 111, 111);
     border-radius: 10px;

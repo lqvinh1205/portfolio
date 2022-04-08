@@ -10,11 +10,11 @@ const SideBarClient = () => {
       <Row className="sidebar-client">
         <Col span={24} className="info-side">
           <div className="name-side">
-            <h2 className="text-white">Simon Doe</h2>
+            <h2 className="text-white">Lê Quang Vinh</h2>
           </div>
           <div className="img-side">
             <img
-              src="https://themes.3rdwavemedia.com/devcard/bs5/1.1/assets/images/profile.png"
+              src="https://res.cloudinary.com/dzroyn2i4/image/upload/v1649358236/car/1e2b85695a2b53327e27075def00d724_xx0zr9.jpg"
               alt=""
             />
           </div>
