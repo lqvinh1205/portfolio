@@ -18,7 +18,13 @@
     display: flex;
     gap: 2%;
 }
+.header-btn-group svg {
+    font-size: 20px;
+}
 .header-btn-view-port button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
     background: #54b689;
     border-radius: 10px;
     padding: 10px 20px;
@@ -29,6 +35,9 @@
     width: 100%;
 }
 .header-btn-view-resume button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
     background: rgb(111, 111, 111);
     border-radius: 10px;
     padding: 10px 20px;

@@ -1,27 +1,35 @@
 import { ContactsOutlined, FacebookOutlined, FileProtectOutlined, InstagramOutlined, ProjectOutlined, UserOutlined, YoutubeOutlined } from "@ant-design/icons";
 import { Col, Row } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { read } from "../../api/myInfo";
 import "./SideBarClient.css";
 
 const SideBarClient = () => {
+  const [myInfo, setMyInfo] = useState('')
+  useEffect(() => {
+    const getMyInfo = async () => {
+      const {data} = await read("624fb6379fa6247e6084f51c")
+      setMyInfo(data)
+    }
+    getMyInfo()
+  },[])
   return (
     <>
       <Row className="sidebar-client">
         <Col span={24} className="info-side">
           <div className="name-side">
-            <h2 className="text-white">Lê Quang Vinh</h2>
+            <h2 className="text-white">{myInfo.name}</h2>
           </div>
           <div className="img-side">
             <img
-              src="https://res.cloudinary.com/dzroyn2i4/image/upload/v1649358236/car/1e2b85695a2b53327e27075def00d724_xx0zr9.jpg"
+              src={myInfo.images}
               alt=""
             />
           </div>
           <div className="info-quickly">
             <p>
-              Hi, my name is Simon Doe and I'm a senior software engineer.
-              Welcome to my personal website!
+            {myInfo.infoQuickly}
             </p>
           </div>
           <div className="social-icon">

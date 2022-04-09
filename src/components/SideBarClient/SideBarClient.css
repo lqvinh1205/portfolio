@@ -1,8 +1,15 @@
-.sidebar-client {
+.sidebar-client,
+.sidebar-client-main {
     background: #54b689;
     /* min-height: 100vh; */
 }
-
+.sidebar-client-main {
+    position: relative;
+}
+.sidebar-client {
+    position: sticky;
+    top: 0;
+}
 .info-side {
     display: flex;
     flex-wrap: wrap;

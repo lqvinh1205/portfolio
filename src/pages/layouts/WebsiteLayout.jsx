@@ -6,7 +6,7 @@ import SideBarClient from "../../components/SideBarClient/SideBarClient";
 const WebsiteLayout = () => {
   return (
     <Row  className='flex flex-wrap'>
-      <Col span={5} className="sidebar-client">
+      <Col span={5} className="sidebar-client-main">
         <SideBarClient/>
       </Col>
       <Col span={19}>
