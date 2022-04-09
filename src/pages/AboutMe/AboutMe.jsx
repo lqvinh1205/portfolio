@@ -1,5 +1,5 @@
 import React from 'react'
-import WhatIDo from '../../components/admin/WhatIDo/WhatIDo'
+import WhatIDo from '../../components/FeaturedProject/WhatIDo/WhatIDo'
 import FeaturedProject from '../../components/FeaturedProject/FeaturedProject'
 import FooterClient from '../../components/FooterClient/FooterClient'
 import HeaderClient from '../../components/HeaderClient/HeaderClient'

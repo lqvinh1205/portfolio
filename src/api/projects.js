@@ -22,7 +22,7 @@ export const remove = async (id) => {
 }
 
 
-export const update = async (id) => {
-    const url = `/projects/${id}/edit`
-    return instance.patch(url)
+export const update = async (project) => {
+    const url = `/projects/${project._id}/edit`
+    return instance.patch(url, project)
 }
