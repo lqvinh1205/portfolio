@@ -17,8 +17,3 @@ const WebsiteLayout = () => {
 };
 
 export default WebsiteLayout;
-{
-  /* <HeaderTop />
-<Outlet />
-<Footer /> */
-}

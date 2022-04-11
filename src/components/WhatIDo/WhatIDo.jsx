@@ -1,118 +1,57 @@
 import { Col, Row } from "antd";
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getListSkill } from "../../features/skills/skillSlice";
 import "./WhatIDo.css";
-const WhatIDo = () => {
+const WhatIDo = (props) => {
+  const skills = useSelector((state) => state.skill.value);
+  const dispath = useDispatch();
+  useEffect(() => {
+    dispath(getListSkill());
+  }, []);
+  console.log('skills ' ,skills);
   return (
-    <>
-      <Row className="i-do">
-        <Col span={24}>
-          <div className="i-do-title">
-            <h1>What I Do</h1>
-          </div>
-          <div className="i-do-sub-desc">
-            <p>
-              I have more than 10 years' experience building software for
-              clients all over the world. Below is a quick overview of my main
-              technical skill sets and technologies I use. Want to find out more
-              about my experience? Check out my online resume and project
-              portfolio.
-            </p>
-          </div>
-        </Col>
-        <Row gutter={[20, 40]}>
-            <Col span={6}>
-              <div className="i-do-img">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeOZDGEJT-ssoe25tmA1ex_ZUuACugzuwikQ&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="i-do-name w-100">
-                <h4>Vanilla JavaScript</h4>
-              </div>
-              <div className="i-do-desc">
-                <p>
-                  List skills/technologies here. You can change the icon above
-                  to any of the 1500+ FontAwesome 5 free icons available. Aenean
-                  commodo ligula eget dolor.
-                </p>
-              </div>
-            </Col>
-            <Col span={6}>
-              <div className="i-do-img">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeOZDGEJT-ssoe25tmA1ex_ZUuACugzuwikQ&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="i-do-name w-100">
-                <h4>Vanilla JavaScript</h4>
-              </div>
-              <div className="i-do-desc">
-                <p>
-                  List skills/technologies here. You can change the icon above
-                  to any of the 1500+ FontAwesome 5 free icons available. Aenean
-                  commodo ligula eget dolor.
-                </p>
-              </div>
-            </Col>
-            <Col span={6}>
-              <div className="i-do-img">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeOZDGEJT-ssoe25tmA1ex_ZUuACugzuwikQ&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="i-do-name">
-                <h4>Vanilla JavaScript</h4>
-              </div>
-              <div className="i-do-desc">
-                <p>
-                  List skills/technologies here. You can change the icon above
-                  to any of the 1500+ FontAwesome 5 free icons available. Aenean
-                  commodo ligula eget dolor.
-                </p>
-              </div>
-            </Col>
-            <Col span={6}>
-              <div className="i-do-img">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeOZDGEJT-ssoe25tmA1ex_ZUuACugzuwikQ&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="i-do-name">
-                <h4>Vanilla JavaScript</h4>
-              </div>
-              <div className="i-do-desc">
-                <p>
-                  List skills/technologies here. You can change the icon above
-                  to any of the 1500+ FontAwesome 5 free icons available. Aenean
-                  commodo ligula eget dolor.
-                </p>
-              </div>
-            </Col>
-            <Col span={6}>
-              <div className="i-do-img">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeOZDGEJT-ssoe25tmA1ex_ZUuACugzuwikQ&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="i-do-name">
-                <h4>Vanilla JavaScript</h4>
-              </div>
-              <div className="i-do-desc">
-                <p>
-                  List skills/technologies here. You can change the icon above
-                  to any of the 1500+ FontAwesome 5 free icons available. Aenean
-                  commodo ligula eget dolor.
-                </p>
-              </div>
-            </Col>
+    props.info && (
+      <>
+        <Row className="i-do">
+          <Col span={24}>
+            <div className="i-do-title">
+              <h1>Những thứ tôi biết</h1>
+            </div>
+            <div className="i-do-sub-desc">
+              <p>{props.info.iCanDo}</p>
+            </div>
+          </Col>
+          <Row gutter={[20, 40]}>
+            {skills.map((item, index) => {
+              return (
+                <Col span={6} key={index}>
+                  <div className="i-do-img">
+                    {item.images.map((images) => {
+                      return(
+                        <img
+                          src={images}
+                          alt=""
+                          key={index}
+                        />
+                      )
+                    })}
+                  </div>
+                  <div className="i-do-name w-100">
+                    <h4>{item.name}</h4>
+                  </div>
+                  <div className="i-do-desc">
+                    <p>
+                    {item.description}
+                    </p>
+                  </div>
+                </Col>
+              );
+            })}
+          </Row>
         </Row>
-      </Row>
-    </>
+      </>
+    )
   );
 };
 

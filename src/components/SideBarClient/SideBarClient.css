@@ -41,15 +41,15 @@
     padding: 20px;
     padding-bottom: 0;
 }
-.social-icon {
-    color: white;
+.social-icon{
     font-size: 30px;
     display: flex;
     justify-content: center;
     gap: 20%;
-    padding-top: 20px;
 }
-
+.social-icon a {
+    color: white;
+}
 
 .menu-sidebar {
     margin-top: 10%;

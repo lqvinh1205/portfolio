@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getListProject, removeProject } from "../projectSlice";
+import { getListSkill, removeSkill } from "../skillSlice";
 
-const ListProjects = (props) => {
-  const projects = useSelector((state) => state.project.value);
+const ListSkill = (props) => {
+  const skills = useSelector((state) => state.skill.value);
   const dispath = useDispatch();
-  console.log(projects);
+  console.log(skills);
   useEffect(() => {
-    dispath(getListProject());
+    dispath(getListSkill());
   }, []);
 
 
@@ -18,27 +18,20 @@ const ListProjects = (props) => {
     Modal.confirm({
       title: "Thông báo",
       content: "Bạn có chắc muốn xóa",
-      onOk: () => dispath(removeProject(id))
+      onOk: () => dispath(removeSkill(id))
     })
     
   }
   const columns = [
     {
-      title: "Name Project",
+      title: "Name Skill",
       dataIndex: "name",
       render: (text) => <a>{text}</a>,
-      width: "25%"
     },
     {
-      title: "Images",
-      dataIndex: "images",
-      render: (images) => <img src={images} alt="" />,
-      width: "25%"
-    },
-    {
-      title: "Authenticate",
-      className: "column-money",
-      dataIndex: "auth",
+      title: "Images Skill",
+      dataIndex: "image",
+      // render: (text) => <a>{text}</a>,
     },
     {
       title: "Description",
@@ -48,10 +41,9 @@ const ListProjects = (props) => {
       title: "Action",
       dataIndex: "_id",
       align: "right",
-      width: "10%",
       render: (id) => (
         <Row className="flex gap-2 justify-end">
-          <Link to={`/admin/projects/${id}/edit`}>
+          <Link to={`/admin/skills/${id}/edit`}>
             <Button type="primary" icon={<EditOutlined />}></Button>
           </Link>
           <Button
@@ -68,20 +60,20 @@ const ListProjects = (props) => {
   return (
     <>
       <Row className="mb-3">
-        <Link to="/admin/projects/add">
-          <Button type="primary">Add Product</Button>
+        <Link to="/admin/skills/add">
+          <Button type="primary">Add Skill</Button>
         </Link>
       </Row>
       <Table
         columns={columns}
-        dataSource={projects}
+        dataSource={skills}
         bordered
         title={() => (
-          <Typography.Title level={3}>List Products</Typography.Title>
+          <Typography.Title level={3}>List Skills</Typography.Title>
         )}
         pagination={{
-          total: projects.lenght,
-          pageSize: 3,
+          total: skills.lenght,
+          pageSize: 5,
           showSizeChanger: true,
           pageSizeOptions: [5, 6, 7]
         }}
@@ -90,4 +82,4 @@ const ListProjects = (props) => {
   );
 };
 
-export default ListProjects;
+export default ListSkill;

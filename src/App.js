@@ -8,7 +8,10 @@ import AboutMe from "./pages/AboutMe/AboutMe";
 import Dashboard from "./components/admin/Dashboard/Dashboard";
 import ListProjects from "./features/projects/pages/ListProject";
 import EditProject from "./features/projects/pages/EditProject";
-import AddProject from "./features/projects/pages/AddProject copy";
+import AddProject from "./features/projects/pages/AddProject";
+import ListSkill from "./features/skills/pages/ListSkill";
+import AddSkill from "./features/skills/pages/AddSkill";
+import EditSkill from "./features/skills/pages/EditSkill";
 function App() {
   return (
     <div className="App">
@@ -19,6 +22,11 @@ function App() {
             <Route index element={<ListProjects />} />
             <Route path="add" element={<AddProject />} />
             <Route path=":id/edit" element={<EditProject />} />
+          </Route>
+          <Route path="skills">
+            <Route index element={<ListSkill />} />
+            <Route path="add" element={<AddSkill />} />
+            <Route path=":id/edit" element={<EditSkill />} />
           </Route>
         </Route>
         <Route path="/" element={<WebsiteLayout />}>

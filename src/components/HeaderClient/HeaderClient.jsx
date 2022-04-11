@@ -4,22 +4,15 @@ import "./HeaderClient.css"
 import { Link } from "react-router-dom";
 import { read } from "../../api/myInfo";
 import { ArrowRightOutlined, FileProtectOutlined } from "@ant-design/icons";
-const HeaderClient = () => {
-  const [myInfo, setMyInfo] = useState('')
-  useEffect(() => {
-    const getMyInfo = async () => {
-      const {data} = await read("624fb6379fa6247e6084f51c")
-      setMyInfo(data)
-    }
-    getMyInfo()
-  },[])
-  return (
+const HeaderClient = (props) => {
+
+  return props.info && (
     <Row className="header-info">
       <Col span={15}>
-        <div className="header-name"><h1>{myInfo.name}</h1></div>
-        <div className="header-subdesc"><h4>{myInfo.subDescription}</h4></div>
+        <div className="header-name"><h1>{props.info.name}</h1></div>
+        <div className="header-subdesc"><h4>{props.info.subDescription}</h4></div>
         <div className="header-desc">
-          <p>{myInfo.description}</p>
+          <p>{props.info.description}</p>
         </div>
         <div className="header-btn-group">
         <Link to="/"  className="header-btn-view-port"><button><ArrowRightOutlined /> View Portfolio</button></Link>
