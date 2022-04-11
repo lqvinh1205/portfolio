@@ -1,4 +1,4 @@
-import { Button, Modal, Row, Table, Typography } from "antd";
+import { Button, Modal, notification, Row, Table, Typography } from "antd";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -13,15 +13,16 @@ const ListSkill = (props) => {
     dispath(getListSkill());
   }, []);
 
-
   const handleRemove = (id) => {
     Modal.confirm({
       title: "Thông báo",
       content: "Bạn có chắc muốn xóa",
-      onOk: () => dispath(removeSkill(id))
-    })
-    
-  }
+      onOk: () =>
+        dispath(removeSkill(id)).then(() =>
+          notification.success({ message: "Xóa thành công" })
+        ),
+    });
+  };
   const columns = [
     {
       title: "Name Skill",
@@ -68,14 +69,12 @@ const ListSkill = (props) => {
         columns={columns}
         dataSource={skills}
         bordered
-        title={() => (
-          <Typography.Title level={3}>List Skills</Typography.Title>
-        )}
+        title={() => <Typography.Title level={3}>List Skills</Typography.Title>}
         pagination={{
           total: skills.lenght,
           pageSize: 5,
           showSizeChanger: true,
-          pageSizeOptions: [5, 6, 7]
+          pageSizeOptions: [5, 6, 7],
         }}
       />
     </>

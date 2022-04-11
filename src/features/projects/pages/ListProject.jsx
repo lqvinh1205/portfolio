@@ -1,4 +1,4 @@
-import { Button, Modal, Row, Table, Typography } from "antd";
+import { Button, Modal, notification, Row, Table, Typography } from "antd";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -18,9 +18,11 @@ const ListProjects = (props) => {
     Modal.confirm({
       title: "Thông báo",
       content: "Bạn có chắc muốn xóa",
-      onOk: () => dispath(removeProject(id))
-    })
-    
+      onOk: () =>
+        dispath(removeProject(id)).then(() =>
+          notification.success({ message: "Xóa thành công" })
+        ),
+    });
   }
   const columns = [
     {

@@ -1,5 +1,16 @@
-import React, { useEffect } from "react";
-import { Form, Input, Button, Row, Select, Upload, notification } from "antd";
+import React, { useEffect, useState } from "react";
+import {
+  Form,
+  Input,
+  Button,
+  Row,
+  Select,
+  Upload,
+  notification,
+  Modal,
+  message,
+  Image,
+} from "antd";
 import { Typography } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./AddProduct.css";
@@ -7,34 +18,60 @@ import { useDispatch } from "react-redux";
 import { updateProject } from "../projectSlice";
 import instance from "../../../api/instance";
 import { useParams } from "react-router-dom";
-
+import axios from "axios";
 
 const { Title } = Typography;
 
 const EditProject = (props) => {
+  const [fileList, setFileList] = useState();
+  const [imageCurrent, setImageCurrent] = useState("");
   const dispath = useDispatch();
   const [form] = Form.useForm();
-  const {id} = useParams()
+  const { id } = useParams();
   useEffect(() => {
     const getProject = async () => {
-      const { data } =  await instance.get(`/projects/${id}`);
-      form.setFieldsValue(data)
+      const { data } = await instance.get(`/projects/${id}`);
+      setImageCurrent(data.images);
+      form.setFieldsValue(data);
     };
     getProject();
   }, []);
   const onFinish = (project) => {
-    dispath(updateProject({_id: id, ...project}));
+    Modal.confirm({
+      title: "Thông báo",
+      content: "Bạn có chắc muốn cập nhật",
+      onOk: async () => {
+        const images = await handleUpload();
+        dispath(
+          updateProject({
+            _id: id,
+            images: images.url || imageCurrent,
+            ...project,
+          })
+        ).then(() => {
+          notification.success({ message: "Cập nhật thành công" });
+          setImageCurrent(images.url)
+        })
+      },
+    });
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const normFile = (e) => {
-    console.log("Upload event:", e);
-    if (Array.isArray(e)) {
-      return e;
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append("file", fileList);
+    formData.append("upload_preset", "portfolio");
+    try {
+      const { data } = await axios.post(
+        "https://api.cloudinary.com/v1_1/dzroyn2i4/image/upload",
+        formData
+      );
+      return data;
+    } catch (error) {
+      return imageCurrent;
     }
-    return e && e.fileList;
   };
   return (
     <>
@@ -81,14 +118,6 @@ const EditProject = (props) => {
         </Form.Item>
 
         <Form.Item
-          label="Images"
-          name="images"
-          rules={[{ required: true, message: "Please input your images!" }]}
-        >
-          <Input placeholder="http://images" />
-        </Form.Item>
-
-        <Form.Item
           label="Link Preview"
           name="linkPreview"
           rules={[
@@ -107,13 +136,18 @@ const EditProject = (props) => {
         >
           <Input placeholder="http://..." />
         </Form.Item>
-        <Form.Item
-          name="images"
-          label="Upload"
-          getValueFromEvent={normFile}
-          extra=""
-        >
-          <Upload name="logo" action="/upload.do" listType="picture">
+
+        <Form.Item label="Images Current">
+          <Image src={imageCurrent} />
+        </Form.Item>
+
+        <Form.Item label="Upload" extra="">
+          <Upload
+            listType="picture"
+            beforeUpload={() => false}
+            maxCount={1}
+            onChange={({ file }) => setFileList(file)}
+          >
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>
         </Form.Item>

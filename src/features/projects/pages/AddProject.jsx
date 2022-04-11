@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
   Input,
@@ -7,6 +7,7 @@ import {
   Select,
   Upload,
   notification,
+  Modal,
 } from "antd";
 import { FormInstance } from "antd/es/form";
 import { Typography } from "antd";
@@ -14,27 +15,43 @@ import { UploadOutlined } from "@ant-design/icons";
 import "./AddProduct.css";
 import { useDispatch } from "react-redux";
 import { createProject } from "../projectSlice";
+import axios from "axios";
 
 const { Title } = Typography;
 const { Option } = Select;
 
 const AddProject = (props) => {
+  const [fileList, setFileList] = useState();
   const dispath = useDispatch();
   const onFinish = (project) => {
-    console.log("page Addaa: ", project);
-    dispath(createProject(project));
+    Modal.confirm({
+      title: "Thông báo",
+      content: "Bạn có chắc muốn thêm",
+      onOk: async () => {
+        const images = await handleUpload();
+        dispath(createProject({ ...project, images: images ? images.url : ""})).then(() =>
+          notification.success({ message: "Thêm thành công" })
+        );
+      },
+    });
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
-  const normFile = (e) => {
-    console.log("Upload event:", e);
-    if (Array.isArray(e)) {
-      return e;
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append("file", fileList);
+    formData.append("upload_preset", "portfolio");
+    try {
+      const { data } = await axios.post(
+        "https://api.cloudinary.com/v1_1/dzroyn2i4/image/upload",
+        formData
+      );
+      return data;
+    } catch (error) {
+      console.log(error);
     }
-    return e && e.fileList;
   };
   return (
     <>
@@ -72,29 +89,42 @@ const AddProject = (props) => {
         <Form.Item
           label="Description"
           name="description"
-          rules={[{ required: true, message: "Please input your Description!" }]}
+          rules={[
+            { required: true, message: "Please input your Description!" },
+          ]}
         >
           <Input placeholder="Description" />
         </Form.Item>
 
-        <Form.Item label="Images" name="images" rules={[{ required: true, message: "Please input your images!" }]}>
-          <Input placeholder="http://images" />
-        </Form.Item>
-
-        <Form.Item label="Link Preview" name="linkPreview" rules={[{ required: true, message: "Please input your link preview!" }]}>
+        <Form.Item
+          label="Link Preview"
+          name="linkPreview"
+          rules={[
+            { required: true, message: "Please input your link preview!" },
+          ]}
+        >
           <Input placeholder="http://..." />
         </Form.Item>
 
-        <Form.Item label="Link Source" name="linkSource" rules={[{ required: true, message: "Please input your link source!" }]}>
+        <Form.Item
+          label="Link Source"
+          name="linkSource"
+          rules={[
+            { required: true, message: "Please input your link source!" },
+          ]}
+        >
           <Input placeholder="http://..." />
         </Form.Item>
         <Form.Item
-          name="images"
           label="Upload"
-          getValueFromEvent={normFile}
-          extra=""
+          rules={[{ required: true, message: "Please input your images!" }]}
         >
-          <Upload name="logo" action="/upload.do" listType="picture">
+          <Upload
+            listType="picture"
+            beforeUpload={() => false}
+            onChange={({ file }) => setFileList(file)}
+            maxCount={1}
+          >
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>
         </Form.Item>

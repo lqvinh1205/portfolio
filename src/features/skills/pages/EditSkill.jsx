@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Input, Button, Row, Select, Upload, notification } from "antd";
+import { Form, Input, Button, Row, Select, Upload, notification, Modal } from "antd";
 import { Typography } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./Skill.css";
@@ -23,7 +23,13 @@ const EditSkill = (props) => {
     getProject();
   }, []);
   const onFinish = (project) => {
-    dispath(updateSkill({_id: id, ...project}));
+    Modal.confirm({
+      title: "Thông báo",
+      content: "Bạn có chắc muốn update",
+      onOk: () => dispath(updateSkill({_id: id, ...project})).then(() => notification.success({
+        message:"Update skill success" 
+      }))
+    })
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

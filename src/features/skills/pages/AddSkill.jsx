@@ -7,6 +7,7 @@ import {
   Select,
   Upload,
   notification,
+  Modal,
 } from "antd";
 import { FormInstance } from "antd/es/form";
 import { Typography } from "antd";
@@ -20,8 +21,13 @@ const { Title } = Typography;
 const AddSkill = (props) => {
   const dispath = useDispatch();
   const onFinish = (skill) => {
-    console.log("page add skill: ", skill);
-    dispath(createSkill(skill));
+    Modal.confirm({
+      title: "Thông báo",
+      content: "Bạn có chắc muốn thêm skill",
+      onOk: () => dispath(createSkill(skill)).then(() => notification.success({
+        message:"Create skill success" 
+      }))
+    })
   };
 
   const onFinishFailed = (errorInfo) => {
