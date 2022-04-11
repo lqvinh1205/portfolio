@@ -9,7 +9,7 @@ const AboutMe = () => {
   const [info, setInfo] = useState();
   useEffect(() => {
     const getInfo = async () => {
-      const { data } = await read("624fb6379fa6247e6084f51c");
+      const { data } = await read();
       setInfo(data);
     };
     getInfo()

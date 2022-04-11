@@ -17,7 +17,7 @@ const SideBarClient = () => {
   const [myInfo, setMyInfo] = useState("");
   useEffect(() => {
     const getMyInfo = async () => {
-      const { data } = await read("624fb6379fa6247e6084f51c");
+      const { data } = await read();
       setMyInfo(data);
     };
     getMyInfo()

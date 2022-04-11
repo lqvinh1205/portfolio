@@ -12,12 +12,14 @@ import AddProject from "./features/projects/pages/AddProject";
 import ListSkill from "./features/skills/pages/ListSkill";
 import AddSkill from "./features/skills/pages/AddSkill";
 import EditSkill from "./features/skills/pages/EditSkill";
+import MyInfo from "./features/MyInfo/MyInfo";
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />}/>
+          <Route path="myinfo" element={<MyInfo />}/>
           <Route path="projects">
             <Route index element={<ListProjects />} />
             <Route path="add" element={<AddProject />} />

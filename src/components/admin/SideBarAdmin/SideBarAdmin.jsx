@@ -32,7 +32,7 @@ const SideBarAdmin = () => {
           <Link to="/admin/skills">Skills manager</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<UserOutlined />}>
-          <Link to="/admin/users">User Manager</Link>
+          <Link to="/admin/myinfo">My Infomation</Link>
         </Menu.Item>
         <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
           <Menu.Item key="6">Team 1</Menu.Item>
