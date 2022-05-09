@@ -51,16 +51,16 @@ const SideBarClient = () => {
           <div className="menu-sidebar">
             <ul>
               <li>
-                <Link to="/">
+                <a href="#header-info">
                   <UserOutlined />
                   About me
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/">
+                <a href="#featured">
                   <ProjectOutlined />
                   Portfolio
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/">

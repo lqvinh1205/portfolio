@@ -12,7 +12,7 @@ const FeaturedProject = () => {
     dispath(getListProject());
   }, []);
   return (
-    <Row className="featured mt-10">
+    <Row className="featured mt-10" id="featured">
       <Col span={24}>
         <div className="featured-title">
           <h1>Featured Project</h1>

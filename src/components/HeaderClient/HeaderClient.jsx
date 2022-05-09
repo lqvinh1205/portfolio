@@ -7,7 +7,7 @@ import { ArrowRightOutlined, FileProtectOutlined } from "@ant-design/icons";
 const HeaderClient = (props) => {
 
   return props.info && (
-    <Row className="header-info">
+    <Row className="header-info" id="header-info">
       <Col span={15}>
         <div className="header-name"><h1>{props.info.name}</h1></div>
         <div className="header-subdesc"><h4>{props.info.subDescription}</h4></div>
