@@ -44,3 +44,12 @@
     font-weight: bold;
     color: white;
 }
+
+@media screen and (max-width: 425px) {
+    .header-info {
+        padding: 10px 20px;
+    }
+    .header-name {
+        font-size: 35px;
+    }
+}

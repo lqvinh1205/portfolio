@@ -25,7 +25,7 @@ const WhatIDo = (props) => {
           <Row gutter={[20, 40]}>
             {skills.map((item, index) => {
               return (
-                <Col span={6} key={index}>
+                <Col xs={24} sm={24} md={8} lg={6} xl={6} key={index}>
                   <div className="i-do-img">
                     {item.images.map((images) => {
                       return(

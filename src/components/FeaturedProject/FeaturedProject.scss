@@ -91,3 +91,21 @@
         background: rgba(0, 0, 0, 0.274);
         opacity: 1;
 }
+
+
+@media screen and (max-width: 425px) {
+    .featured {
+        padding: 0 20px;
+    }
+    .featured-items {
+        padding: 10px 5px;
+    }
+    .featured-items-img {
+        height: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    .featured-items-img {
+        height: auto;
+    }
+}

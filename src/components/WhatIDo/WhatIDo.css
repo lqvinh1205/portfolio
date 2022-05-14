@@ -38,3 +38,9 @@
     padding: 5px 0;
      font-size: 18px;
 }
+
+@media screen and (max-width: 425px){
+    .i-do {
+        padding: 30px 20px;
+    }
+}

@@ -22,7 +22,7 @@ const FeaturedProject = () => {
       <Row gutter={[16, 16]}>
         {projects.map((item, index) => {
           return (
-            <Col span={12} key={index}>
+            <Col xs={24} sm={24} md={12} lg={12} key={index}>
               <div className="featured-items">
                 <div className="featured-items-content">
                   <div className="featured-items-img">
