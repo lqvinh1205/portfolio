@@ -38,7 +38,10 @@
     padding: 5px 0;
      font-size: 18px;
 }
-
+.i-do-items {
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
 @media screen and (max-width: 425px){
     .i-do {
         padding: 30px 20px;

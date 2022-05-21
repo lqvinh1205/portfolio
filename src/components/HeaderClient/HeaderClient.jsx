@@ -15,8 +15,8 @@ const HeaderClient = (props) => {
           <p>{props.info.description}</p>
         </div>
         <div className="header-btn-group">
-        <Link to="/"  className="header-btn-view-port"><button><ArrowRightOutlined /> View Portfolio</button></Link>
-        <Link to="/" className="header-btn-view-resume"><button><FileProtectOutlined /> View Resume</button></Link>
+        <a href="#featured"  className="header-btn-view-port"><button><ArrowRightOutlined /> View Portfolio</button></a>
+        <a href="#i-do" className="header-btn-view-resume"><button><FileProtectOutlined /> View Resume</button></a>
         </div>
       </Col>
       <Col  xs={0} sm={0} md={9} lg={9} xl={9}>
