@@ -47,6 +47,11 @@ const WhatIDo = (props) => {
               breakpoints={{
                 425: {
                   allowTouchMove: false,
+                  slidesPerView: 3,
+                  grid: { rows: 2, fill: "row"},
+                },
+                769: {
+                  allowTouchMove: false,
                   slidesPerView: 4,
                   grid: { rows: 2, fill: "row"},
                 },
