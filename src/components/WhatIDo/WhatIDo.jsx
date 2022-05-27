@@ -1,15 +1,15 @@
 import { Col, Row } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListSkill } from "../../features/skills/skillSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid } from "swiper";
+import { Grid, EffectCube, Autoplay } from "swiper";
 import "./WhatIDo.css";
 
-import "swiper/css/grid";
-
 // Import Swiper styles
+import "swiper/css/effect-cube";
 import "swiper/css";
+import "swiper/css/grid";
 
 const WhatIDo = (props) => {
   const skills = useSelector((state) => state.skill.value);
@@ -17,7 +17,7 @@ const WhatIDo = (props) => {
   useEffect(() => {
     dispath(getListSkill());
   }, []);
-  console.log("skills ", skills);
+  let mobile = window.matchMedia('(min-width: 0px) and (max-width: 425px)');
   return (
     props.info && (
       <>
@@ -32,29 +32,33 @@ const WhatIDo = (props) => {
           </Col>
           <div style={{ width: "100%" }}>
             <Swiper
-              module={[Grid]}
-              effect={"coverflow"}
-              slidesPerView={1}
-              draggable={false}
-              simulateTouch={false}
+              effect={`${mobile.matches ? "cube" : "slide"}`}
+              loop={ mobile.matches } 
+              modules={[Grid, EffectCube, Autoplay]}
+              autoplay={ {
+                delay: 3000,
+              }}
+              cubeEffect={{
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+              }}
               breakpoints={{
                 425: {
-                  slidesPerView: 3,
-                  grid: { rows: 2 },
-                },
-                769: {
+                  allowTouchMove: false,
                   slidesPerView: 4,
-                  grid: { rows: 2 },
+                  grid: { rows: 2, fill: "row"},
                 },
               }}
             >
               {skills.map((item, index) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <Col span={24} className="i-do-items">
                       <div className="i-do-img">
                         {item.images.map((images) => {
-                          return <img src={images} alt="" key={index} />;
+                          return <img src={images} alt="" />;
                         })}
                       </div>
                       <div className="i-do-name w-100">

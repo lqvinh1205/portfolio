@@ -117,7 +117,7 @@ const SideBarClient = () => {
           </div>
         </Col>
       </Row>
-      {/* Menu when responsive media <678px */}
+      {/* Menu when responsive media <768px */}
       <div className="menu-sidebar-mobile">
       <Button className="btn-show-menu-mobile" onClick={showDrawer}>
         <MenuFoldOutlined style={{ fontSize: '23px', color: '#fff' }} />

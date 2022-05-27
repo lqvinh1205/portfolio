@@ -107,6 +107,7 @@
         align-items: center;
         border: 2px solid rgb(237, 237, 237);
         background: #54b689;
+        z-index: -999999;
     }
 }
 @media screen and (max-width: 769px){
