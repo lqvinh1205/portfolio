@@ -1,16 +1,22 @@
 import React from "react";
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
   TeamOutlined,
   UserOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SubMenu from "antd/lib/menu/SubMenu";
 
 const SideBarAdmin = () => {
+  const navigate = useNavigate()
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate("/login")
+  };
   return (
     <>
       <Link to="/">
@@ -21,7 +27,9 @@ const SideBarAdmin = () => {
               alt=""
             />
           </div>
-          <div className="text-white font-bold text-lg text-center pt-3">ElecCar</div>
+          <div className="text-white font-bold text-lg text-center pt-3">
+            ElecCar
+          </div>
         </div>
       </Link>
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
@@ -40,6 +48,9 @@ const SideBarAdmin = () => {
         </SubMenu>
         <Menu.Item key="9" icon={<FileOutlined />}>
           <Link to="/admin/projects">Projects manager</Link>
+        </Menu.Item>
+        <Menu.Item key="10" icon={<LogoutOutlined />} onClick={logout}>
+          Log-out
         </Menu.Item>
       </Menu>
     </>
