@@ -92,26 +92,20 @@ const SideBarClient = () => {
               <li>
                 <a href="#header-info">
                   <UserOutlined />
-                  About me
+                  Giới thiệu
                 </a>
               </li>
               <li>
                 <a href="#featured">
                   <ProjectOutlined />
-                  Portfolio
+                  Dự án đã làm
                 </a>
               </li>
               <li>
-                <Link to="/">
+                <a href="#i-do">
                   <FileProtectOutlined />
-                  Resume
-                </Link>
-              </li>
-              <li>
-                <Link to="/">
-                  <ContactsOutlined />
-                  Contact
-                </Link>
+                  Kỹ năng
+                </a>
               </li>
             </ul>
           </div>

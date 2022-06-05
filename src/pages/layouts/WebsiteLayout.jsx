@@ -2,7 +2,6 @@ import { Col, Row } from "antd";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import SideBarClient from "../../components/SideBarClient/SideBarClient";
-import "./WebsiteLayout.css"
 const WebsiteLayout = () => {
   return (
     <Row  className='flex flex-wrap'>

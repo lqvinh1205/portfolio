@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Avatar, Typography } from "antd";
+import React from "react";
+import { Row, Col } from "antd";
 import "./HeaderClient.css"
-import { Link } from "react-router-dom";
-import { read } from "../../api/myInfo";
 import { ArrowRightOutlined, FileProtectOutlined } from "@ant-design/icons";
 const HeaderClient = (props) => {
 
@@ -15,8 +13,8 @@ const HeaderClient = (props) => {
           <p>{props.info.description}</p>
         </div>
         <div className="header-btn-group">
-        <a href="#featured"  className="header-btn-view-port"><button><ArrowRightOutlined /> View Portfolio</button></a>
-        <a href="#i-do" className="header-btn-view-resume"><button><FileProtectOutlined /> View Resume</button></a>
+        <a href="#featured"  className="header-btn-view-port"><button><ArrowRightOutlined />Dự án đã làm</button></a>
+        <a href="#i-do" className="header-btn-view-resume"><button><FileProtectOutlined /> Kỹ năng</button></a>
         </div>
       </Col>
       <Col  xs={0} sm={0} md={9} lg={9} xl={9}>
