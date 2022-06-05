@@ -13,13 +13,22 @@ import ListSkill from "./features/skills/pages/ListSkill";
 import AddSkill from "./features/skills/pages/AddSkill";
 import EditSkill from "./features/skills/pages/EditSkill";
 import MyInfo from "./features/MyInfo/MyInfo";
+import PrivateRouter from "./components/admin/PrivateRouter";
+import Auth from "./pages/auth/Auth";
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="admin" element={<AdminLayout />}>
-          <Route index element={<Dashboard />}/>
-          <Route path="myinfo" element={<MyInfo />}/>
+        <Route
+          path="admin"
+          element={
+            <PrivateRouter>
+              <AdminLayout />
+            </PrivateRouter>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="myinfo" element={<MyInfo />} />
           <Route path="projects">
             <Route index element={<ListProjects />} />
             <Route path="add" element={<AddProject />} />
@@ -34,6 +43,7 @@ function App() {
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<AboutMe />} />
         </Route>
+        <Route path="login" element={<Auth />} />
       </Routes>
     </div>
   );
