@@ -19,30 +19,30 @@ const FeaturedProject = () => {
         </div>
       </Col>
 
-      <Row gutter={[16, 16]}>
+      <Row gutter={[20, 16]}>
         {projects.map((item, index) => {
           return (
-            <Col xs={24} sm={24} md={12} lg={12} key={index}>
-              <div className="featured-items">
-                <div className="featured-items-content">
-                  <div className="featured-items-img">
-                    <img
-                      src={item.images}
-                      alt=""
-                    />
+            <Col
+              xs={24}
+              sm={24}
+              md={12}
+              lg={12}
+              key={index}
+              className="featured-items"
+            >
+              <div className="featured-items-content">
+                <div className="featured-items-img">
+                  <img src={item.images} alt="" />
+                </div>
+                <div className="featured-items-details">
+                  <div className="featured-items-name">
+                    <h2>{item.name}</h2>
                   </div>
-                  <div className="featured-items-details">
-                    <div className="featured-items-name">
-                      <h2>{item.name}</h2>
-                    </div>
-                    <div className="featured-items-desc">
-                      <p>
-                        {item.description}
-                      </p>
-                    </div>
-                    <div className="featured-items-by">
-                      <span>by. {item.auth}</span>
-                    </div>
+                  <div className="featured-items-desc">
+                    <p>{item.description}</p>
+                  </div>
+                  <div className="featured-items-by">
+                    <span>by. {item.auth}</span>
                   </div>
                 </div>
                 <div className="featured-items-btn-middle">

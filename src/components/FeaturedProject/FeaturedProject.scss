@@ -23,10 +23,13 @@
 .featured-items {
     display: flex;
     flex-wrap: wrap;
+    
+}
+.featured-items-content {
     padding: 10px 20px;
-    border: 1px solid #acacac;
     border-radius: 10px;
     position: relative;
+    border: 1px solid #acacac;
     overflow: hidden;
 }
 .featured-items-img {
